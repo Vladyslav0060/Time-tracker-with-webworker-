@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@200&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+}
+body {
+  padding-top: 30px;
+  min-height: 700px;
+  /* background: rgba(73, 135, 230, 0.459); */
+  background-image: url("/src/background.png");
+  background-repeat: no-repeat;
+  background-size: inherit;
+  color: white;
+}
+.navigation {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  bottom: 20px;
+  background: rgb(12 57 115 / 68%);
+  border-radius: 10px;
+  box-sizing: initial;
+  border-left: 5px solid rgb(21 50 90 / 0%);
+  width: 70px;
+  transition: width 0.5s;
+  overflow-x: hidden;
+}
+.navigation.active {
+  width: 200px;
+}
+.navigation ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0;
+  padding-top: 40px;
+}
+.navigation ul li {
+  position: relative;
+  list-style: none;
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.navigation ul li.active {
+  background: rgba(73, 135, 230);
+}
+.navigation ul li b:nth-child(1) {
+  position: absolute;
+  top: -20px;
+  height: 20px;
+  width: 100%;
+  background: rgba(73, 135, 230);
+  display: none;
+}
+.navigation ul li b:nth-child(1)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-bottom-right-radius: 20px;
+  background: rgb(15 50 105 / 99%);
+}
+.navigation ul li b:nth-child(2) {
+  position: absolute;
+  bottom: -20px;
+  height: 20px;
+  width: 100%;
+  background: rgba(73, 135, 230);
+  display: none;
+}
+.navigation ul li b:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-top-right-radius: 20px;
+  background: rgb(15 50 105 / 99%);
+}
+.navigation ul li.active b:nth-child(1),
+.navigation ul li.active b:nth-child(2) {
+  display: block;
+}
+.navigation ul li a {
+  color: rgb(255, 255, 255);
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+}
+.navigation ul li.active .title,
+.navigation ul li.active .icon {
+  color: black;
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 70px;
+  text-align: center;
+}
+.navigation ul li a .icon ion-icon {
+  font-size: 1.5em;
+}
+.navigation ul li .title {
+  position: relative;
+  display: block;
+  padding-left: 10px;
+  height: 60px;
+  line-height: 60px;
+  white-space: nowrap;
+}
+.toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: rgba(73, 135, 230);
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.toggle.active {
+  background: crimson;
+}
+.toggle ion-icon {
+  position: absolute;
+  color: white;
+  font-size: 34px;
+  display: block;
+}
+.toggle ion-icon.open,
+.toggle.active ion-icon.close {
+  display: block;
+}
+.toggle ion-icon.close,
+.toggle.active ion-icon.open {
+  display: none;
+}
+.wrapper {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1500px;
+  padding-left: 100px;
+  height: 100%;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.table {
+  background: rgba(73, 135, 230);
+  margin: 0 auto;
+}
+.table-dark {
+  --bs-table-bg: #461a3f;
+  --bs-table-striped-bg: #161a44;
+}
