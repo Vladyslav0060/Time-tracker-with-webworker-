@@ -1,15 +1,15 @@
 import { Button, Form } from "react-bootstrap";
 import styles from "../CssModules/Login.module.css";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { actionType } from "../store/store";
-import React, { useState } from "react";
+
 const axios = require("axios");
-const Registration = () => {
+const LoginPage = () => {
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [checkbox, setCheckbox] = useState(false);
   const onChangePassword = (e) => {
     setPassword(e.target.value);
   };
@@ -21,29 +21,72 @@ const Registration = () => {
   };
   // const [registrationToggle,setRegistrationToggle] = useState(false)
   const onSubmit = (e) => {
-    localStorage.clear();
-    register();
+    login();
     e.preventDefault();
   };
   const togglePage = () => {
     dispatch({ type: actionType.TOGGLE_LOGIN_PAGE });
   };
-  let register = async () => {
-    try {
-      let body = { username: username, email: email, password: password };
-      localStorage.setItem(
-        "token",
-        await axios.post(`http://localhost:8080/api/register`, body)
-      );
-      togglePage();
-    } catch (error) {
-      console.log(error);
-    }
+  let getFromLocalStorage = async () => {
+    let result = {};
+    console.log("got it");
+    const token = await localStorage.getItem("token");
+    return axios({
+      method: "post",
+      url: "http://localhost:8080/api/decodetoken",
+      data: { token },
+    })
+      .then(async function (response) {
+        result = await response.data;
+      })
+      .then(function () {
+        return result;
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
   };
 
+  let login = async () => {
+    let body = {
+      username: username,
+      email: email,
+      password: password,
+    };
+    if (localStorage.getItem("token") !== null) {
+      console.log("popavs");
+      const temp = await getFromLocalStorage();
+      const { username, email, password, userID } = temp;
+      body = { username, email, password, userID };
+      return;
+    }
+    console.log("booody", body);
+    axios({
+      method: "post",
+      url: "http://localhost:8080/api/login",
+      data: body,
+    })
+      .then(async function (response) {
+        console.log("response: ", response);
+        localStorage.setItem("token", response.data.accessToken);
+        const temp = await getFromLocalStorage();
+        const { id } = temp;
+        body.id = id;
+        console.log(`Welcome,${body.username},${body.email}`);
+        console.log("body", body);
+        console.log("accessToken", response.data.accessToken);
+        dispatch({ type: actionType.TOGGLE_LOGIN });
+        dispatch({ type: actionType.SET_USERDATA, payload: body });
+      })
+      .catch(function (err) {
+        console.log(err);
+        // alert("try again");
+      });
+  };
   return (
     <div>
-      <h1 className={styles.title}>Regitration page</h1>
+      <h1 className={styles.title}>Login page</h1>
+
       <div className={styles.wrapper}>
         <div className={styles.content}>
           {/* <Button variant="success">Success</Button>{" "} */}
@@ -78,7 +121,7 @@ const Registration = () => {
               <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
               </Form.Text>
-              <Form.Check type="checkbox" label="I agree with all terms" />
+              {/* <Form.Check type="checkbox" label="Check me out" /> */}
             </Form.Group>
             <div className={styles.buttonGroup}>
               <Button
@@ -86,9 +129,8 @@ const Registration = () => {
                 size="m"
                 type="submit"
                 onClick={onSubmit}
-                disabled={!checkbox}
               >
-                Register
+                Login
               </Button>
               <Button
                 variant="outline-info"
@@ -96,7 +138,7 @@ const Registration = () => {
                 size="sm"
                 onClick={togglePage}
               >
-                Login page
+                Register
               </Button>
             </div>
           </Form>
@@ -106,4 +148,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default LoginPage;

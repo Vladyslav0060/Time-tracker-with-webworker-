@@ -1,0 +1,96 @@
+.wrapper {
+  margin: 0 auto;
+  color: white;
+  width: 100%;
+  max-width: 1500px;
+  padding-left: 100px;
+  height: 90vh;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: inherit;
+}
+
+.title {
+  display: flex;
+  align-items: top;
+  justify-content: center;
+  text-align: center;
+  margin-left: 5%;
+}
+.Time {
+  font-size: xxx-large;
+  position: relative;
+  color: rgb(53, 206, 26);
+  font-family: digital, arial, verdana;
+  background: black;
+  border-radius: 5px;
+  padding-left: 2%;
+  padding-right: 2%;
+  border: 10px;
+  width: min-content;
+  border-color: red;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  border: 2px #ababab;
+  border-style: inset;
+}
+@font-face {
+  font-family: "digital";
+
+  src: url("../fonts/ds_digital/DS-DIGI.TTF");
+}
+.input_half {
+  width: 50%;
+  height: 2.5rem;
+  border-radius: 5px;
+  border: none;
+  text-indent: 10px;
+}
+.buttons {
+  width: 20rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+.block {
+  margin-top: 30px;
+  padding: 10px;
+  margin-top: 2rem;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  background-color: rgb(64 63 63 / 94%);
+  border-radius: 5px;
+  /* margin-bottom: 2rem; */
+  outline: 2px rgb(140 140 140);
+  outline-offset: -6px;
+  outline-style: inset;
+}
+.dot {
+  width: 20px;
+  height: 20px;
+  background-color: none;
+  border-radius: 30px;
+}
+.dot_active {
+  width: 20px;
+  height: 20px;
+  background-color: rgb(173, 63, 63);
+  border-radius: 30px;
+  outline: 2px rgb(81 36 106);
+}
+.watchUpperWrapper {
+  background-image: url(/src/images/stripes.png);
+  background-size: 330px 77px;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}

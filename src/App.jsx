@@ -9,6 +9,7 @@ import Login from "./Components/Login";
 import { useDispatch, useSelector } from "react-redux";
 import { actionType } from "./store/store";
 import ListActivities from "./Components/ListActivities";
+import Registration from "./Components/Registration";
 const axios = require("axios");
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
     <Router>
       <div className="navigation">
         <ul>
-          <li className="list active">
+          <li className="list">
             <b></b>
             <b></b>
             <Link to="/">
@@ -136,6 +137,7 @@ function App() {
         </GuardRoute>
         <GuardRoute exact path="/activities" component={Activities}>
           <span className="icon"></span>
+          <div className="wrapper"></div>
           <Activities />
         </GuardRoute>
         <GuardRoute exact path="/settings" component={Settings}>
@@ -145,6 +147,9 @@ function App() {
         <Route exact path="/login">
           <span className="icon"></span>
           <Login />
+        </Route>
+        <Route exact path="/register">
+          <Registration />
         </Route>
       </Switch>
       <div className="toggle">

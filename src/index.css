@@ -1,0 +1,31 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.mobile body {
+  overflow: hidden;
+}
+
+.mobile #wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.mobile #scroller {
+  height: 3000px;
+}
+
+.header {
+  height: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.header h1 {
+  color: white;
+}

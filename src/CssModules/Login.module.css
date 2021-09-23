@@ -22,3 +22,10 @@
   text-align: center;
   margin-left: 5%;
 }
+.buttonGroup {
+  display: flex;
+  justify-content: space-evenly;
+}
+.outlineButton {
+  background: #00000026;
+}

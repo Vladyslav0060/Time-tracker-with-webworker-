@@ -1,0 +1,82 @@
+.form1 {
+  background-color: rgba(255, 255, 240, 0.705);
+  min-height: 25vh;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 15px;
+  color: black;
+  display: grid;
+  grid-area: f1;
+  text-align: center;
+  font-size: 1.5rem;
+  overflow: auto;
+}
+.form1 h2,
+span,
+p {
+  height: initial;
+  /* vertical-align: top; */
+  align-self: center;
+}
+.form2 {
+  /* padding: 10px;
+  margin-top: 10px; */
+  min-height: 25vh;
+  background-color: #8c7ddcad;
+  color: white !important;
+  /* color: white;
+  border-radius: 15px;
+  color: black;
+  display: grid;
+  grid-area: f2;
+  text-align: center; */
+  padding: 15px;
+  margin: 10px;
+  border-radius: 15px;
+  color: black;
+  display: grid;
+  grid-area: f2;
+  text-align: center;
+  overflow: auto;
+}
+/* .form2 h2,
+p,
+span {
+  color: white;
+} */
+.form3 {
+  min-height: 25vh;
+  background-color: #d8bfd8a3;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+  display: grid;
+  position: relative;
+  grid-area: f3;
+  text-align: center;
+  overflow: auto;
+}
+.form4 {
+  background-color: rgb(58, 60, 184);
+  min-height: 25vh;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+  display: grid;
+  overflow: auto;
+}
+.gridContainer {
+  display: grid;
+
+  height: 90vh;
+  width: 100%;
+  /* justify-content: center;
+  align-content: center; */
+  grid-template-columns: 3.5fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "f1 f2 f2 f2"
+    "f1 f2 f2 f2"
+    "f1 f3 f3 f3"
+    ". f3 f3 f3";
+}
